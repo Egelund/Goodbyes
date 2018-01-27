@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212123027451243204}
   - component: {fileID: 50698828014642886}
   - component: {fileID: 61678335923281668}
-  - component: {fileID: 114684440919182072}
+  - component: {fileID: 114881867596642012}
   m_Layer: 0
   m_Name: WaveAsset
   m_TagString: Wave
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
---- !u!114 &114684440919182072
+--- !u!114 &114881867596642012
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1898320389633630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0661690f067318741910a062d971509b, type: 3}
+  m_Script: {fileID: 11500000, guid: d4bfaa7382973446d8cb4f5c7a8e7165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 0}
