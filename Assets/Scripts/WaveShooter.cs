@@ -5,27 +5,18 @@ using UnityEngine;
 public class WaveShooter : MonoBehaviour {
 
 	[HideInInspector]
-	public Rigidbody2D wavePrefab;
+	public Rigidbody2D rigidBody;
 
-	public Vector2 ForceOnShoot;
+	public GameObject wavePrefab;
+
 	// Use this for initialization
 	void Start () {
-		wavePrefab = GetComponent<Rigidbody2D>();
-		//wavePrefab.AddForce(Vector2.right * 1000f);
-		//wavePrefab.Add
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space))
-		{
-			wavePrefab.AddForce(ForceOnShoot	);
-			Debug.Log("Shooted");
-		}
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+	public void Shoot(Quaternion newRotation)
 	{
-		Debug.Log("CollisionEnter");
+		rigidBody = GetComponent<Rigidbody2D>();
+		transform.rotation = newRotation;
+		rigidBody.AddForce(transform.up * 10, ForceMode2D.Impulse);
 	}
 }
