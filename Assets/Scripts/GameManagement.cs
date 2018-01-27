@@ -62,6 +62,7 @@ public class GameManagement : MonoBehaviour {
 			if(triggerSelected != null)
 			{
 				Debug.Log(hit.transform.name);
+
 			}
 		}
 	}
