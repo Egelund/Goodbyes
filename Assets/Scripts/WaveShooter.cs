@@ -13,6 +13,21 @@ public class WaveShooter : MonoBehaviour {
 	void Start () {
 	}
 
+	Vector3 savedVelocity;
+	Vector3 savedAngularVelocity;
+
+	void OnPauseGame()
+	{
+		//savedVelocity = rigidBody.velocity;
+		//savedAngularVelocity = rigidBody.angularVelocity;
+	}
+
+	void OnResumeGame()
+	{
+		//rigidBody.AddForce(savedVelocity, ForceMode.VelocityChange);
+		//rigidBody.AddTorque(savedAngularVelocity, ForceMode2D.Impulse);
+	}
+
 	public void Shoot(Quaternion newRotation)
 	{
 		rigidBody = GetComponent<Rigidbody2D>();
