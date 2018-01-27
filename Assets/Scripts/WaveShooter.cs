@@ -19,7 +19,7 @@ public class WaveShooter : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			wavePrefab.AddForce(ForceOnShoot);
+			wavePrefab.AddForce(ForceOnShoot	);
 			Debug.Log("Shooted");
 		}
 	}
