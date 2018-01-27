@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 4725031433595196}
   - component: {fileID: 120255385000488512}
   - component: {fileID: 114765805639745130}
+  - component: {fileID: 114782934165941146}
   m_Layer: 0
   m_Name: WaveLine
   m_TagString: Wave
@@ -748,6 +749,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 0}
+--- !u!114 &114782934165941146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1338728904251504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639aae1702a8b4d8abd64e6baa435639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 10
 --- !u!114 &114803438053842708
 MonoBehaviour:
   m_ObjectHideFlags: 1
