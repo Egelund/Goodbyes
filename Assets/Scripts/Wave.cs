@@ -6,8 +6,8 @@ public class Wave : MonoBehaviour
 {
     LineRenderer lineRenderer;
 
-    // Use this for initialization
-    void Start()
+	// Use this for initialization
+	void Start()
     {
 
         lineRenderer = GetComponent<LineRenderer>();
