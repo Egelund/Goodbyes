@@ -21,7 +21,8 @@ public class WaveTrigger : MonoBehaviour
 			Debug.Log("TriggerEnter2D");
 			WaveShooter waveShooter = collision.gameObject.GetComponent<WaveShooter>();
 			Vector3 speed = waveShooter.GetComponent<Rigidbody2D>().velocity;
-			Destroy(collision.gameObject);
+			GameManagement.instance.UnregisterWave(collision.gameObject);
+			Destroy(collision.gameObject);	
 			RedirectWave(speed);
 		}
 		else
@@ -48,6 +49,8 @@ public class WaveTrigger : MonoBehaviour
 		Vector3 eulerRotation = transform.rotation.eulerAngles;
 
 		GameObject Temp = GameObject.Instantiate<GameObject>(wavePrefab, initialPosition, transform.rotation);
+
+		GameManagement.instance.RegisterWave(Temp);
 		retriggeredWaves.Add(Temp);
 		WaveShooter wshooter = Temp.GetComponent<WaveShooter>();
 		wshooter.Shoot(transform.rotation);
