@@ -24,4 +24,9 @@ public class Wave : MonoBehaviour
             lineRenderer.SetPosition(i, transform.GetChild(i).position);
         }
     }
+
+	public void DestroyWave()
+	{
+		Destroy(this.gameObject);
+	}
 }

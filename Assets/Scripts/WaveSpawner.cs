@@ -30,10 +30,18 @@ public class WaveSpawner : MonoBehaviour
 		Vector3 initialPosition = transform.position;
 		for (int i = 0; i < burstNumber; i++)
 		{
+			//initialPosition += transform.forward * distance;
+			//GameObject Temp = GameObject.Instantiate<GameObject>(wavePrefab, initialPosition, transform.rotation);
+			//WaveShooter wshooter = Temp.GetComponent<WaveShooter>();
+			//wshooter.Shoot(transform.rotation);
+			//GameManagement.instance.RegisterWave(Temp);
 			initialPosition += transform.forward * distance;
 			GameObject Temp = GameObject.Instantiate<GameObject>(wavePrefab, initialPosition, transform.rotation);
-			WaveShooter wshooter = Temp.GetComponent<WaveShooter>();
-			wshooter.Shoot(transform.rotation);
+			WaveShooter[] points = Temp.transform.GetComponentsInChildren<WaveShooter>();
+			for (int k = 0; k < points.Length; k++)
+			{
+				points[k].Shoot(transform.rotation);
+			}
 			GameManagement.instance.RegisterWave(Temp);
 		}
 	}
