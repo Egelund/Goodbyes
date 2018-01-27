@@ -5,13 +5,17 @@ using UnityEngine;
 public class WaveTrigger : MonoBehaviour
 {
 	public GameObject wavePrefab;
-	public BoxCollider2D myBoxCollider;
 
+	[HideInInspector]
 	public List<GameObject> retriggeredWaves;
 
 	public Transform CircleRetriggerer;
 
 	public float angleToRotate;
+
+	public bool rotatableByUser;
+
+	public bool rotateOnItOwn;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{		
@@ -39,6 +43,9 @@ public class WaveTrigger : MonoBehaviour
 
 	public void Rotate()
 	{
+		if (!rotatableByUser)
+			return;
+
 		Vector3 newEuler = CircleRetriggerer.eulerAngles;
 		newEuler.z += angleToRotate;
 		CircleRetriggerer.eulerAngles = newEuler;
@@ -51,7 +58,7 @@ public class WaveTrigger : MonoBehaviour
 			retriggeredWaves.Remove(collision.gameObject);
 		}
 
-		Debug.Log("Collision exit");
+		//Debug.Log("Collision exit");
 	}
 
 	private void RedirectWave(Vector3 speed)
