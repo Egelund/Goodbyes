@@ -8,6 +8,11 @@ public class WaveTrigger : MonoBehaviour
 	public BoxCollider2D myBoxCollider;
 
 	public List<GameObject> retriggeredWaves;
+
+	public Transform CircleRetriggerer;
+
+	public float angleToRotate;
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{		
 		if(retriggeredWaves.Contains(collision.gameObject))
@@ -32,6 +37,13 @@ public class WaveTrigger : MonoBehaviour
 		}
 	}
 
+	public void Rotate()
+	{
+		Vector3 newEuler = CircleRetriggerer.eulerAngles;
+		newEuler.z += angleToRotate;
+		CircleRetriggerer.eulerAngles = newEuler;
+	}	
+
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		if(retriggeredWaves.Contains(collision.gameObject))
@@ -44,15 +56,17 @@ public class WaveTrigger : MonoBehaviour
 
 	private void RedirectWave(Vector3 speed)
 	{
-		Vector3 initialPosition = transform.position;
+		Vector3 initialPosition = CircleRetriggerer.position;
+		Vector3 eulerRotation = CircleRetriggerer.rotation.eulerAngles;
+
+
 		speed.Normalize();
-		Vector3 eulerRotation = transform.rotation.eulerAngles;
 
 		GameObject Temp = GameObject.Instantiate<GameObject>(wavePrefab, initialPosition, transform.rotation);
 
 		GameManagement.instance.RegisterWave(Temp);
 		retriggeredWaves.Add(Temp);
 		WaveShooter wshooter = Temp.GetComponent<WaveShooter>();
-		wshooter.Shoot(transform.rotation);
+		wshooter.Shoot(CircleRetriggerer.rotation);
 	}
 }

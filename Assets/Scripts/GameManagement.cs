@@ -61,8 +61,7 @@ public class GameManagement : MonoBehaviour {
 			WaveTrigger triggerSelected = hit.collider.gameObject.GetComponent<WaveTrigger>();
 			if(triggerSelected != null)
 			{
-				Debug.Log(hit.transform.name);
-
+				triggerSelected.Rotate();
 			}
 		}
 	}
