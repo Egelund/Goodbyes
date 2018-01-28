@@ -5,18 +5,7 @@ using UnityEngine;
 public class WaveCollisionHandler : MonoBehaviour
 {
 
-
-	// Use this for initialization
-	void Start()
-	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
+	List<GameObject> augmentedWaves = new List<GameObject>();
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
@@ -27,17 +16,25 @@ public class WaveCollisionHandler : MonoBehaviour
 				return;
 			}
 		}
+
 		//Debug.Log("Trigger Entered Handler");
 
 		if (other.transform.parent.gameObject.tag == "Wave")
 		{
 			Wave otherWave = other.transform.parent.gameObject.GetComponent<Wave>();
 			Wave thisWave = transform.parent.GetComponent<Wave>();
-			if(thisWave.burstID == otherWave.burstID)
+			if (augmentedWaves.Contains(other.gameObject))
+			{
+				return;
+			}
+
+			if (thisWave.burstID == otherWave.burstID)
 			{
 				//Debug.Log("FIXED");
 				return;
 			}
+
+			augmentedWaves.Add(other.gameObject);
 			thisWave.OnWaveCollision(otherWave);
 		}
 	}

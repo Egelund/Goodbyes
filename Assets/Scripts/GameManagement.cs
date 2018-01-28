@@ -78,6 +78,10 @@ public class GameManagement : MonoBehaviour {
 		{
 			spawnedWaves.Remove(oldWave);
 		}
+		else
+		{
+			Debug.Log("here is the problem");
+		}
 	}
 
 	// Use this for initialization

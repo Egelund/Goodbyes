@@ -5,13 +5,21 @@ using UnityEngine;
 public class FadeOverLifetime : MonoBehaviour {
 
 	public float lifetime;
-	private float birthtime;
+	public float birthtime;
 	//private SpriteRenderer spriteRenderer;
 	private LineRenderer lineRenderer;
+	Wave myWave;
+	public void ResetLifeTime()
+	{
+		birthtime = Time.time;
+		//Debug.Log("Reseted");
+	}
+
 	void Start () {
 		//spriteRenderer = GetComponent<SpriteRenderer>();
 		lineRenderer = GetComponent<LineRenderer>();
 		birthtime = Time.time;
+		myWave = GetComponent<Wave>();
 	}
 	
 	// Update is called once per frame
@@ -29,7 +37,7 @@ public class FadeOverLifetime : MonoBehaviour {
 		lineRenderer.startColor = tmp;
 
 		//Chau baby!
-		if (Time.time > birthtime+lifetime)
-			Destroy(gameObject);
+		if (Time.time > birthtime + lifetime)
+			myWave.DestroyWave();
 	}
 }

@@ -811,6 +811,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbcdc28a17b3d473798a5fccd4f85b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  burstID: 0
+  retriggerer: {fileID: 0}
+  initialPositions: []
+  childPositions: []
 --- !u!114 &114773376802207182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -846,6 +850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 0.77
+  birthtime: 0
 --- !u!114 &114803438053842708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -889,8 +894,8 @@ LineRenderer:
   m_GameObject: {fileID: 1338728904251504}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0

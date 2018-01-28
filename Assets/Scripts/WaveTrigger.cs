@@ -48,19 +48,19 @@ public class WaveTrigger : MonoBehaviour
 		if (collision.tag == "Wave")
 		{
 			//Debug.Log("TriggerEnter2D");
-			WaveShooter waveShooter = collision.gameObject.GetComponent<WaveShooter>();
-			Vector3 speed = waveShooter.GetComponent<Rigidbody2D>().velocity;
 			retriggeredWaves.Add(collision.gameObject.transform.parent.gameObject);
-			GameManagement.instance.UnregisterWave(collision.gameObject);
+
 			Wave waveToDestroy = collision.gameObject.transform.parent.GetComponent<Wave>();
 			lastIDTook = waveToDestroy.burstID;
-			waveToDestroy.DestroyWave();
-			RedirectWave(speed);
+
+			waveToDestroy.DestroyWave(this);
+
+			RedirectWave();
 		}
 		else
 		{
-			Debug.Log(collision.tag);
-			Debug.Log("didnt set tag properly");
+			//Debug.Log(collision.tag);
+			//Debug.Log("didnt set tag properly");
 		}
 	}
 
@@ -81,27 +81,36 @@ public class WaveTrigger : MonoBehaviour
 			retriggeredWaves.Remove(collision.gameObject);
 		}
 	}
-
-	private void RedirectWave(Vector3 speed)
+	GameObject Temp;
+	private void RedirectWave()
 	{
-		Vector3 initialPosition = CircleRetriggerer.position;
-		Vector3 eulerRotation = CircleRetriggerer.rotation.eulerAngles;
+		//		if(GameManagement.instance.spawnedWaves.Count > 0)
+		//		{ 
+		//}
+		//		while(!GameManagement.instance.spawnedWaves.Contains(Temp))
+		//		{
+		//			Temp = WavePool.instance.GetWave();
+		//		}
 
+		GameObject Temp = Instantiate<GameObject>(wavePrefab);
+		Temp.GetComponent<Wave>().ResetWavePosition();
 
-		speed.Normalize();
-
-		GameObject Temp = GameObject.Instantiate<GameObject>(wavePrefab, initialPosition, transform.rotation);
-		Temp.GetComponent<Wave>().burstID = lastIDTook;
+		Temp.transform.position = transform.position;
 		Temp.transform.rotation = CircleRetriggerer.rotation;
+
+		Temp.GetComponent<Wave>().burstID = lastIDTook;
+
 		GameManagement.instance.RegisterWave(Temp);
-		retriggeredWaves.Add(Temp);
-		//WaveShooter wshooter = Temp.GetComponent<WaveShooter>();
-		//wshooter.Shoot(CircleRetriggerer.rotation);
+
+		if(!retriggeredWaves.Contains(Temp))
+		{
+			retriggeredWaves.Add(Temp);
+		}
+
 		WaveShooter[] points = Temp.transform.GetComponentsInChildren<WaveShooter>();
 		for (int k = 0; k < points.Length; k++)
 		{
 			points[k].Shoot(CircleRetriggerer.rotation);
 		}
-
 	}
 }

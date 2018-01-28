@@ -11,16 +11,37 @@ public class Wave : MonoBehaviour
 
 	public int burstID;
 
-    // Use this for initialization
-    void Start()
+	public WaveTrigger retriggerer;
+
+	public List<Vector3> deltaPositions = new List<Vector3>();
+	public Transform[] childPositions;
+	// Use this for initialization
+	void Start()
     {
 
         lineRenderer = GetComponent<LineRenderer>();
         Debug.Assert(lineRenderer != null);
         Debug.Assert(transform.childCount > 0);
 
-
+		childPositions = gameObject.GetComponentsInChildren<Transform>();
+		for (int i = 0; i < childPositions.Length; i++)
+		{
+			deltaPositions.Add(childPositions[i].position);
+		}
 	}
+
+	public void ResetWavePosition()
+	{
+		//for (int i = 0; i < childPositions.Length; i++)
+		//{
+		//	if (childPositions[i] != null)
+		//	{
+		//		childPositions[i].position = new Vector3(childPositions[i].position.x + deltaPositions[i].x, 
+		//													childPositions[i].position.y + deltaPositions[i].y);
+		//	}
+		//}
+	}
+
 
 	// Update is called once per frame
 	void Update()
@@ -32,12 +53,24 @@ public class Wave : MonoBehaviour
         }
     }
 
-    public void DestroyWave()
+    public void DestroyWave(WaveTrigger trigger = null)
     {
-        Destroy(this.gameObject);
-    }
+		if(trigger != null)
+		{
+			if(retriggerer != null)
+			{
+				retriggerer.retriggeredWaves.Remove(this.gameObject);
+			}
+			retriggerer = trigger;
+		}
 
-    public void OnWaveCollision(Wave other){
+		GameManagement.instance.UnregisterWave(this.gameObject);
+		Destroy(this.gameObject);
+
+		//WavePool.instance.ReturnWave(this.gameObject);
+	}
+
+	public void OnWaveCollision(Wave other){
         addLifetime(other.getLifeTime(),other.GetInstanceID());
     }
 
@@ -55,4 +88,13 @@ public class Wave : MonoBehaviour
     {
         return GetComponent<FadeOverLifetime>().lifetime;
     }
+
+	private void OnDisable()
+	{
+		transform.rotation = Quaternion.Euler(Vector3.zero);
+		for (int i = 0; i < childPositions.Length; i++)
+		{
+			childPositions[i].position = deltaPositions[i];
+		}
+	}
 }
