@@ -55,7 +55,9 @@ MonoBehaviour:
   wavePrefab: {fileID: 1338728904251504, guid: 586d85a17172041b39699d9701cb17e4, type: 2}
   spawnedWaves: []
   distance: 2
-  burstNumber: 1
+  burstNumber: 3
+  burstRate: 0.1
+  spawnRate: 0.7
 --- !u!212 &212455183326125490
 SpriteRenderer:
   m_ObjectHideFlags: 1
