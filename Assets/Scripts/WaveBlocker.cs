@@ -12,6 +12,11 @@ public class WaveBlocker : MonoBehaviour {
 			return;
 		}
 
+		if(GetComponent<LineRenderer>() != null)
+		{
+			return;
+		}
+
 		GameObject lineRenderer = collision.gameObject.transform.parent.gameObject;
 		Destroy(collision.gameObject);
 	}

@@ -12,6 +12,46 @@ public class GameManagement : MonoBehaviour {
 
 	private bool win;
 
+	private int waveID;
+
+	public int WinTriggersNeeded;
+
+	private int currentWinTriggers;
+
+	public int GetCurrentWinTriggers()
+	{
+		return currentWinTriggers;
+	}
+
+	public void AddWinTrigger()
+	{
+		currentWinTriggers++;
+		Debug.Log("added" + currentWinTriggers);
+		if(currentWinTriggers == WinTriggersNeeded)
+		{
+			SetWin();
+		}
+	}
+
+	public void SubstractWinTrigger()
+	{
+		currentWinTriggers--;
+		Debug.Log("substracted" + currentWinTriggers);
+
+	}
+
+	public void SetWinTriggersNeeded()
+	{
+		WinTriggersNeeded = FindObjectsOfType<GoalTrigger>().Length;
+		currentWinTriggers = 0;
+	}
+
+	public int GetNewID()
+	{
+		waveID++;
+		return waveID;
+	}
+
 	private void Awake()
 	{
 		if(instance == null)
@@ -43,6 +83,7 @@ public class GameManagement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DontDestroyOnLoad(this);
+		SetWinTriggersNeeded();
 	}
 
 	public bool GetWin()

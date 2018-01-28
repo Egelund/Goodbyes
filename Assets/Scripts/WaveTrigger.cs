@@ -17,11 +17,13 @@ public class WaveTrigger : MonoBehaviour
 
 	public bool rotateOnItOwn;
 
+	private int lastIDTook;
+
 	private void OnTriggerEnter2D(Collider2D collision)
 	{		
 		if(retriggeredWaves.Contains(collision.gameObject))
 		{
-			Debug.Log("Non called trigger");
+			//Debug.Log("Non called trigger");
 			return;
 		}
 
@@ -33,7 +35,7 @@ public class WaveTrigger : MonoBehaviour
 				{
 					if (collision.gameObject.transform.parent.gameObject != null && retriggeredWaves.Contains(collision.gameObject.transform.parent.gameObject))
 					{
-						Debug.Log("Non called trigger");
+						//Debug.Log("Non called trigger");
 
 						return;
 					}
@@ -45,14 +47,14 @@ public class WaveTrigger : MonoBehaviour
 
 		if (collision.tag == "Wave")
 		{
-			Debug.Log("TriggerEnter2D");
+			//Debug.Log("TriggerEnter2D");
 			WaveShooter waveShooter = collision.gameObject.GetComponent<WaveShooter>();
 			Vector3 speed = waveShooter.GetComponent<Rigidbody2D>().velocity;
-
 			retriggeredWaves.Add(collision.gameObject.transform.parent.gameObject);
-
 			GameManagement.instance.UnregisterWave(collision.gameObject);
-			collision.gameObject.transform.parent.GetComponent<Wave>().DestroyWave();
+			Wave waveToDestroy = collision.gameObject.transform.parent.GetComponent<Wave>();
+			lastIDTook = waveToDestroy.burstID;
+			waveToDestroy.DestroyWave();
 			RedirectWave(speed);
 		}
 		else
@@ -89,6 +91,7 @@ public class WaveTrigger : MonoBehaviour
 		speed.Normalize();
 
 		GameObject Temp = GameObject.Instantiate<GameObject>(wavePrefab, initialPosition, transform.rotation);
+		Temp.GetComponent<Wave>().burstID = lastIDTook;
 		Temp.transform.rotation = CircleRetriggerer.rotation;
 		GameManagement.instance.RegisterWave(Temp);
 		retriggeredWaves.Add(Temp);

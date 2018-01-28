@@ -19,6 +19,9 @@ public class WaveSpawner : MonoBehaviour
 	public float spawnRate;
 	private float currentSpawnTime;
 	private bool shootingWave;
+
+	private int currentID;
+
 	void Update()
 	{
 		SpawnRateControl();
@@ -51,6 +54,7 @@ public class WaveSpawner : MonoBehaviour
 			{
 				currentSpawnTime = spawnRate;
 				shootingWave = true;
+				currentID = GameManagement.instance.GetNewID();
 			}
 		}
 	}
@@ -74,6 +78,7 @@ public class WaveSpawner : MonoBehaviour
 		//GameManagement.instance.RegisterWave(Temp);
 		initialPosition += transform.forward * distance;
 		GameObject Temp = GameObject.Instantiate<GameObject>(wavePrefab, initialPosition, transform.rotation);
+		Temp.GetComponent<Wave>().burstID = currentID;
 		WaveShooter[] points = Temp.transform.GetComponentsInChildren<WaveShooter>();
 		for (int k = 0; k < points.Length; k++)
 		{

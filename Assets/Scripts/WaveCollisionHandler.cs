@@ -20,7 +20,6 @@ public class WaveCollisionHandler : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-
 		if (other.gameObject != null)
 		{
 			if (other.transform.parent == null)
@@ -28,12 +27,18 @@ public class WaveCollisionHandler : MonoBehaviour
 				return;
 			}
 		}
-		Debug.Log("Trigger Entered Handler");
+		//Debug.Log("Trigger Entered Handler");
 
 		if (other.transform.parent.gameObject.tag == "Wave")
 		{
 			Wave otherWave = other.transform.parent.gameObject.GetComponent<Wave>();
-			transform.parent.GetComponent<Wave>().OnWaveCollision(otherWave);
+			Wave thisWave = transform.parent.GetComponent<Wave>();
+			if(thisWave.burstID == otherWave.burstID)
+			{
+				//Debug.Log("FIXED");
+				return;
+			}
+			thisWave.OnWaveCollision(otherWave);
 		}
 	}
 }

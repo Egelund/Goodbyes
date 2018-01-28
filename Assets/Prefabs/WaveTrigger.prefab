@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1245065317826444}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 2.95, z: 0}
+  m_LocalPosition: {x: -0, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4068589730804688}
@@ -94,9 +94,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1540886840069976}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.37141, y: 1.5998375, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_Children:
   - {fileID: 4029592534762956}
   m_Father: {fileID: 0}
@@ -138,7 +138,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.6, y: 7.2}
+    oldSize: {x: 0.9, y: 0.93}
     newSize: {x: 3.6, y: 7.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -158,8 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b1b3edcaa4f4304a1eae1ac9cce8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavePrefab: {fileID: 1898320389633630, guid: 88fee9b46aa509f498e8e6396a9b3cbc, type: 2}
-  myBoxCollider: {fileID: 61600280848325006}
+  wavePrefab: {fileID: 1338728904251504, guid: 586d85a17172041b39699d9701cb17e4, type: 2}
   retriggeredWaves: []
   CircleRetriggerer: {fileID: 4029592534762956}
   angleToRotate: 45
@@ -199,7 +198,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cbc2e2f8b648649ddbce0101d0c000ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76a78a5df0b1f7347b532e7f423e4411, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

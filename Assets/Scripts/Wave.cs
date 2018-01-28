@@ -9,6 +9,8 @@ public class Wave : MonoBehaviour
     private int lastEnhancerID;
     LineRenderer lineRenderer;
 
+	public int burstID;
+
     // Use this for initialization
     void Start()
     {
@@ -16,10 +18,12 @@ public class Wave : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         Debug.Assert(lineRenderer != null);
         Debug.Assert(transform.childCount > 0);
-    }
 
-    // Update is called once per frame
-    void Update()
+
+	}
+
+	// Update is called once per frame
+	void Update()
     {
         lineRenderer.positionCount = transform.childCount;
         for (int i = 0; i < transform.childCount; i++)
