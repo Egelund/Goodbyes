@@ -21,11 +21,11 @@ public class FadeOverLifetime : MonoBehaviour {
 		// spriteRenderer.color = tmp;
 
 		Color tmp = lineRenderer.endColor;
-		tmp.a -= Time.deltaTime/lifetime;
+		tmp.a = Mathf.Lerp(1,0,(Time.time-birthtime)/lifetime);
 		lineRenderer.endColor = tmp;
 
 		tmp = lineRenderer.startColor;
-		tmp.a -= Time.deltaTime/lifetime;
+		tmp.a = Mathf.Lerp(1,0,(Time.time-birthtime)/lifetime);
 		lineRenderer.startColor = tmp;
 
 		//Chau baby!

@@ -41,14 +41,14 @@ public class WaveTriggerMovable : WaveTrigger
 	{
 		if (waypointA == null || waypointB == null)
 		{
-			Debug.Log("Trying to set direction with null waypont");
+			// Debug.Log("Trying to set direction with null waypont");
 			return;
 		}
 
 		if (waypoint == waypointA)
 		{
 			currentWaypoint = waypointB;
-			Debug.Log("New DirectionB");
+			// Debug.Log("New DirectionB");
 
 		}
 		else

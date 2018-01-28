@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Wave : MonoBehaviour
 {
+
+    private int enhancedCount = 0;
+    private int lastEnhancerID;
     LineRenderer lineRenderer;
 
-	// Use this for initialization
-	void Start()
+    // Use this for initialization
+    void Start()
     {
 
         lineRenderer = GetComponent<LineRenderer>();
@@ -25,8 +28,27 @@ public class Wave : MonoBehaviour
         }
     }
 
-	public void DestroyWave()
-	{
-		Destroy(this.gameObject);
-	}
+    public void DestroyWave()
+    {
+        Destroy(this.gameObject);
+    }
+
+    public void OnWaveCollision(Wave other){
+        addLifetime(other.getLifeTime(),other.GetInstanceID());
+    }
+
+    void addLifetime(float time, int sourceID)
+    {
+        if (sourceID != lastEnhancerID)
+        {
+            GetComponent<FadeOverLifetime>().lifetime += time;
+            lastEnhancerID = sourceID;
+            enhancedCount++;
+        }
+    }
+
+    float getLifeTime()
+    {
+        return GetComponent<FadeOverLifetime>().lifetime;
+    }
 }

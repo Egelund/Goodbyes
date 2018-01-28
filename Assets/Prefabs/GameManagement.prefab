@@ -48,6 +48,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1824160822848720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfd4429aa4774da4e8c880e2dafcf1c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d764fdf08e5b4391a37659c1ffb4ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnedWaves: []
