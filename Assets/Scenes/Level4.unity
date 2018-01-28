@@ -1051,16 +1051,6 @@ Prefab:
       propertyPath: m_Name
       value: WaveSpawner (Start)
       objectReference: {fileID: 0}
-    - target: {fileID: 212455183326125490, guid: 1a3e767a0e275264f82264b97298c228,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7b0e06d3e7ac2484eb4b624027fcf86e,
-        type: 3}
-    - target: {fileID: 4138998212567736, guid: 1a3e767a0e275264f82264b97298c228, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1a3e767a0e275264f82264b97298c228, type: 2}
   m_IsPrefabParent: 0

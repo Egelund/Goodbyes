@@ -1283,31 +1283,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 61603793278036050, guid: ce6b79a12eb4a694ab88de7aab313240,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61603793278036050, guid: ce6b79a12eb4a694ab88de7aab313240,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61603793278036050, guid: ce6b79a12eb4a694ab88de7aab313240,
-        type: 2}
-      propertyPath: m_Offset.y
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114625620482932006, guid: ce6b79a12eb4a694ab88de7aab313240,
-        type: 2}
-      propertyPath: TriggerTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114625620482932006, guid: ce6b79a12eb4a694ab88de7aab313240,
-        type: 2}
-      propertyPath: SceneToLoad
-      value: Level3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce6b79a12eb4a694ab88de7aab313240, type: 2}
   m_IsPrefabParent: 0
