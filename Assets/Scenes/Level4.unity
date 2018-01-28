@@ -1158,7 +1158,7 @@ Prefab:
     - target: {fileID: 114625620482932006, guid: ce6b79a12eb4a694ab88de7aab313240,
         type: 2}
       propertyPath: SceneToLoad
-      value: WHAT
+      value: Credits
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce6b79a12eb4a694ab88de7aab313240, type: 2}
@@ -1186,7 +1186,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4899933859044194, guid: 417fcf266fccf9c4595ae59e42e16d67, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.46
+      value: -4.91
       objectReference: {fileID: 0}
     - target: {fileID: 4899933859044194, guid: 417fcf266fccf9c4595ae59e42e16d67, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1311,7 +1311,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4899933859044194, guid: 417fcf266fccf9c4595ae59e42e16d67, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -4.46
+      value: -4.91
       objectReference: {fileID: 0}
     - target: {fileID: 4899933859044194, guid: 417fcf266fccf9c4595ae59e42e16d67, type: 2}
       propertyPath: m_LocalPosition.z
