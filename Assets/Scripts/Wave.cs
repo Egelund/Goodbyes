@@ -93,14 +93,6 @@ public class Wave : MonoBehaviour
 
 	private void OnDisable()
 	{
-		//transform.rotation = Quaternion.Euler(Vector3.zero);
-		//for (int i = 0; i < childPositions.Length; i++)
-		//{
-		//	if(childPositions[i] != null)
-		//	{
-		//		childPositions[i].position = deltaPositions[i];
-		//	}
-			
-		//}
+		transform.rotation = Quaternion.Euler(Vector3.zero);
 	}
 }
