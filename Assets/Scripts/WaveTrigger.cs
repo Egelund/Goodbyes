@@ -64,15 +64,24 @@ public class WaveTrigger : MonoBehaviour
 		}
 	}
 
-	public void Rotate()
+	public void Rotate(int direction)
 	{
 		if (!rotatableByUser)
 			return;
-
 		Vector3 newEuler = CircleRetriggerer.eulerAngles;
-		newEuler.z += angleToRotate;
+
+		if (direction == 0)
+		{
+			newEuler.z += angleToRotate;
+		}
+		else
+		{
+			newEuler.z -= angleToRotate;
+		}
+
 		CircleRetriggerer.eulerAngles = newEuler;
-	}	
+
+	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{

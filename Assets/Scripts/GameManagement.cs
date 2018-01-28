@@ -99,7 +99,7 @@ public class GameManagement : MonoBehaviour {
 		return win;
 	}
 
-	public void ControlTriggers()
+	public void ControlTriggers(int direction)
 	{
 		Debug.Log("Control Triggers");
 		Vector2 rayPos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -110,7 +110,7 @@ public class GameManagement : MonoBehaviour {
 			WaveTrigger triggerSelected = hit.collider.gameObject.GetComponent<WaveTrigger>();
 			if(triggerSelected != null)
 			{
-				triggerSelected.Rotate();
+				triggerSelected.Rotate(direction);
 			}
 		}
 	}
@@ -153,7 +153,12 @@ public class GameManagement : MonoBehaviour {
 
 		if(Input.GetMouseButtonDown(0))
 		{
-			ControlTriggers();
+			ControlTriggers(0);
+		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+			ControlTriggers(1);
 		}
 	}
 }

@@ -26,6 +26,11 @@ public class Wall : MonoBehaviour
 			{
 				return;
 			}
+
+			if (collision.gameObject.transform.parent.gameObject == null)
+			{
+				return;
+			}
 		}
 
 		Wave wave = collision.gameObject.transform.parent.gameObject.GetComponent<Wave>();

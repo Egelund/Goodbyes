@@ -8,6 +8,7 @@ public class ScreenManager : MonoBehaviour {
 	{
 		ScreenFade.instance.FadeIn();
 		ScreenFade.instance.fadeInFinished += FinallyStartGame;
+		DontDestroyOnLoad(this);
 	}
 
 	public void FinallyStartGame()
