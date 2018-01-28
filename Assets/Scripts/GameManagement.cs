@@ -29,13 +29,17 @@ public class GameManagement : MonoBehaviour {
 		Debug.Log("added" + currentWinTriggers);
 		if(currentWinTriggers == WinTriggersNeeded)
 		{
-			SetWin();
+			SetWin(true);
 		}
 	}
 
 	public void SubstractWinTrigger()
 	{
 		currentWinTriggers--;
+		if(currentWinTriggers < 0)
+		{
+			currentWinTriggers = 0;
+		}
 		Debug.Log("substracted" + currentWinTriggers);
 
 	}
@@ -121,9 +125,9 @@ public class GameManagement : MonoBehaviour {
 		waveTriggers = FindObjectsOfType<WaveTrigger>();
 	}
 
-	public void SetWin()
+	public void SetWin(bool value)
 	{
-		win = true;
+		win = value;
 		for (int i = 0; i < spawnedWaves.Count; i++)
 		{
 			if(spawnedWaves[i] != null)
@@ -140,6 +144,11 @@ public class GameManagement : MonoBehaviour {
 		if(win)
 		{
 			Debug.Log("Win");
+		}
+
+		if(win && currentWinTriggers == 0)
+		{
+			win = false;
 		}
 
 		if(Input.GetMouseButtonDown(0))

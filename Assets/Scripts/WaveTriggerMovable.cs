@@ -18,6 +18,10 @@ public class WaveTriggerMovable : WaveTrigger
 	public bool shouldItMove;
 	// Update is called once per frame
 
+	public bool shouldItFlip;
+
+	public SpriteRenderer spriteRenderer;
+
 	private void Start()
 	{
 		if (!shouldItMove)
@@ -26,18 +30,21 @@ public class WaveTriggerMovable : WaveTrigger
 		}
 
 		currentWaypoint = waypointA;
+
+		
 	}
 
-	void Update()
+	public virtual void Update()
 	{
 		if(!shouldItMove)
 		{
 			return;
 		}
+
 		MoveToWaypoint();
 	}
 
-	public void SetNewDirection(Waypoint waypoint)
+	public virtual void SetNewDirection(Waypoint waypoint)
 	{
 		if (waypointA == null || waypointB == null)
 		{
@@ -55,6 +62,12 @@ public class WaveTriggerMovable : WaveTrigger
 		{
 			currentWaypoint = waypointA;
 
+		}
+
+		if(shouldItFlip)
+		{
+			spriteRenderer.flipX = !spriteRenderer.flipX;
+			Debug.Log("Flip");
 		}
 	}
 

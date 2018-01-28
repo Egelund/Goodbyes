@@ -29,10 +29,21 @@ public class Waypoint : MonoBehaviour {
 			return;
 		}
 
-		WaveTriggerMovable wave = collision.gameObject.GetComponent<WaveTriggerMovable>();
-		if(wave.currentWaypoint == this)
+		WaveTriggerWithPath wave = collision.gameObject.GetComponent<WaveTriggerWithPath>();
+		if (wave == null)
 		{
-			wave.SetNewDirection(this);
+			WaveTriggerMovable movableWave = collision.gameObject.GetComponent<WaveTriggerMovable>();
+			if (movableWave.currentWaypoint == this)
+			{
+				movableWave.SetNewDirection(this);
+			}
+		}
+		else
+		{
+			if (wave.currentWaypoint == this)
+			{
+				wave.SetNewDirection(this);
+			}
 		}
 	}
 }
