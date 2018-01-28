@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaveTrigger : MonoBehaviour
 {
 	public GameObject wavePrefab;
+	private AudioSource audioSource;
 
 	[HideInInspector]
 	public List<GameObject> retriggeredWaves;
@@ -18,6 +19,11 @@ public class WaveTrigger : MonoBehaviour
 	public bool rotateOnItOwn;
 
 	private int lastIDTook;
+
+	private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{		
@@ -80,6 +86,7 @@ public class WaveTrigger : MonoBehaviour
 		}
 
 		CircleRetriggerer.eulerAngles = newEuler;
+		audioSource.PlayOneShot(audioSource.clip);
 
 	}
 

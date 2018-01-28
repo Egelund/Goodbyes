@@ -5,91 +5,98 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
 
-	[SerializeField]
-	public GameObject wavePrefab;
+    [SerializeField]
+    public GameObject wavePrefab;
+    private AudioSource audioSource;
 
-	public List<Wave> spawnedWaves = new List<Wave>();
-	public Dictionary<int, WaveShooter[]> wavePoints = new Dictionary<int, WaveShooter[]>();
-	public float distance;
-	public int burstNumber;
-	private int currentBurstCounter;
-	public float burstRate;
-	private float currentBurstRate;
+    public List<Wave> spawnedWaves = new List<Wave>();
+    public Dictionary<int, WaveShooter[]> wavePoints = new Dictionary<int, WaveShooter[]>();
+    public float distance;
+    public int burstNumber;
+    private int currentBurstCounter;
+    public float burstRate;
+    private float currentBurstRate;
 
-	public float spawnRate;
-	private float currentSpawnTime;
-	private bool shootingWave;
+    public float spawnRate;
+    private float currentSpawnTime;
+    private bool shootingWave;
 
-	private int currentID;
+    private int currentID;
 
-	void Update()
-	{
-		SpawnRateControl();
-	}
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
-	public void SpawnRateControl()
-	{
+    void Update()
+    {
+        SpawnRateControl();
+    }
 
-		if (shootingWave)
-		{
-			if (currentBurstCounter >= burstNumber)
-			{
-				shootingWave = false;
-				currentBurstCounter = 0;
-				return;
-			}
+    public void SpawnRateControl()
+    {
 
-			currentBurstRate -= Time.deltaTime;
-			if (GameManagement.instance.spawnedWaves.Count >= 4 * burstNumber)
-			{
-				return;
-			}
+        if (shootingWave)
+        {
+            if (currentBurstCounter >= burstNumber)
+            {
+                shootingWave = false;
+                currentBurstCounter = 0;
+                return;
+            }
 
-			if (currentBurstRate <= 0)
-			{
-				currentBurstRate = burstRate;
-				currentBurstCounter++;
-				ShootWave();
-			}
-		}
-		else
-		{
-			currentSpawnTime -= Time.deltaTime;
-			if (currentSpawnTime <= 0)
-			{
-				currentSpawnTime = spawnRate;
-				shootingWave = true;
-				currentID = GameManagement.instance.GetNewID();
-			}
-		}
-	}
+            currentBurstRate -= Time.deltaTime;
+            if (GameManagement.instance.spawnedWaves.Count >= 4 * burstNumber)
+            {
+                return;
+            }
 
-	private void ShootWave()
-	{
+            if (currentBurstRate <= 0)
+            {
+                currentBurstRate = burstRate;
+                currentBurstCounter++;
+                ShootWave();
+            }
+        }
+        else
+        {
+            currentSpawnTime -= Time.deltaTime;
+            if (currentSpawnTime <= 0)
+            {
+                currentSpawnTime = spawnRate;
+                shootingWave = true;
+                currentID = GameManagement.instance.GetNewID();
+            }
+        }
+    }
 
-		if (GameManagement.instance.GetWin())
-		{
-			return;
-		}
+    private void ShootWave()
+    {
 
-		shootingWave = true;
+        if (GameManagement.instance.GetWin())
+        {
+            return;
+        }
+        audioSource.PlayOneShot(audioSource.clip);
+        shootingWave = true;
 
-		Vector3 initialPosition = transform.position;
-		initialPosition += transform.forward * distance;
+        Vector3 initialPosition = transform.position;
+        initialPosition += transform.forward * distance;
 
-		//GameObject Temp = WavePool.instance.GetWave();
-		GameObject Temp = Instantiate<GameObject>(wavePrefab);
-		Temp.transform.position = initialPosition;
-		Temp.transform.rotation = transform.rotation;
+        //GameObject Temp = WavePool.instance.GetWave();
+        GameObject Temp = Instantiate<GameObject>(wavePrefab);
+        Temp.transform.position = initialPosition;
+        Temp.transform.rotation = transform.rotation;
 
-		Temp.GetComponent<Wave>().ResetWavePosition();
-		Temp.GetComponent<Wave>().burstID = currentID;
+        Temp.GetComponent<Wave>().ResetWavePosition();
+        Temp.GetComponent<Wave>().burstID = currentID;
 
-		WaveShooter[] points = Temp.transform.GetComponentsInChildren<WaveShooter>();
-		for (int k = 0; k < points.Length; k++)
-		{
-			points[k].Shoot(transform.rotation);
-		}
-		GameManagement.instance.RegisterWave(Temp);
-	}
+        WaveShooter[] points = Temp.transform.GetComponentsInChildren<WaveShooter>();
+        for (int k = 0; k < points.Length; k++)
+        {
+            points[k].Shoot(transform.rotation);
+        }
+        GameManagement.instance.RegisterWave(Temp);
+
+    }
 }
