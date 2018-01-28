@@ -8,7 +8,7 @@ public class WaveBlocker : MonoBehaviour {
 	{
 		if(collision.tag != "Wave")
 		{
-			Debug.Log("Wave Blocker collided with something its not a dot");
+			//Debug.Log("Wave Blocker collided with something its not a dot");
 			return;
 		}
 
