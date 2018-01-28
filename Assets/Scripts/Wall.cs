@@ -22,7 +22,7 @@ public class Wall : MonoBehaviour
 
 		if (collision.gameObject != null)
 		{
-			if (collision.gameObject.transform.parent.gameObject == null)
+			if (collision.gameObject.transform.parent == null)
 			{
 				return;
 			}

@@ -29,7 +29,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: BURBUJA_base_radiostation
+    path: BURBUJA_base_radiostation (1)
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -45,7 +45,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: BURBUJA_base_radiostation (1)
+    path: RAYIOS
     classID: 212
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -57,14 +57,14 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2910613453
+      path: 3750144973
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 212
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3750144973
+      path: 3654999109
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 212
@@ -105,7 +105,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: BURBUJA_base_radiostation
+    path: BURBUJA_base_radiostation (1)
     classID: 212
     script: {fileID: 0}
   - curve:
@@ -121,7 +121,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: BURBUJA_base_radiostation (1)
+    path: RAYIOS
     classID: 212
     script: {fileID: 0}
   m_EulerEditorCurves: []
