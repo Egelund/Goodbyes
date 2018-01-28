@@ -522,6 +522,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114625620482932006, guid: ce6b79a12eb4a694ab88de7aab313240,
+        type: 2}
+      propertyPath: SceneToLoad
+      value: Level2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce6b79a12eb4a694ab88de7aab313240, type: 2}
   m_IsPrefabParent: 0
@@ -557,10 +562,10 @@ RectTransform:
   m_Father: {fileID: 1038377057}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 362, y: 204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789157372
 MonoBehaviour:
