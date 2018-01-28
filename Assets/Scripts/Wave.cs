@@ -5,6 +5,7 @@ using UnityEngine;
 public class Wave : MonoBehaviour
 {
 
+    private AudioSource audioSource;
     private int enhancedCount = 0;
     private int lastEnhancerID;
     LineRenderer lineRenderer;
@@ -18,7 +19,7 @@ public class Wave : MonoBehaviour
 	// Use this for initialization
 	void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
         lineRenderer = GetComponent<LineRenderer>();
         Debug.Assert(lineRenderer != null);
         Debug.Assert(transform.childCount > 0);
@@ -81,6 +82,7 @@ public class Wave : MonoBehaviour
             GetComponent<FadeOverLifetime>().lifetime += time;
             lastEnhancerID = sourceID;
             enhancedCount++;
+            audioSource.PlayOneShot(audioSource.clip);
         }
     }
 
